@@ -258,5 +258,6 @@ export interface IOrder {
 
 ## UML-схема
 Проект также содержит UML-схему, отражающую актуальную архитектуру, в которой показано разделение на слои, взаимодействие компонентов и навигация между страницами. 
-![image](https://github.com/user-attachments/assets/a9b632db-b2a8-4402-8f88-5b0dbdecdc52)
+![image](https://github.com/user-attachments/assets/28e451e1-7605-430f-8561-ca5fca33b636)
+
 
