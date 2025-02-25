@@ -1,5 +1,5 @@
 /**
- * Базовый интерфейс товара
+ * Базовый интерфейс для товара
  */
 interface IBaseProduct {
     id: string;
@@ -11,12 +11,12 @@ interface IBaseProduct {
 }
 
 /**
- * Товар, приходящий от API
+ * Товар, приходящий от API (например, в ответ на GET /product/)
  */
 export interface IApiProduct extends IBaseProduct {}
 
 /**
- * Товар внутри приложения (UI)
+ * Товар, используемый внутри приложения (UI).
  */
 export interface IProduct extends IBaseProduct {}
 
@@ -24,12 +24,12 @@ export interface IProduct extends IBaseProduct {}
  * Список товаров, возвращаемый с бэкенда
  */
 export interface IApiProductList {
-    total: number;
-    items: IApiProduct[];
+    total: number;        // Общее количество товаров
+    items: IApiProduct[]; // Массив товаров
 }
 
 /**
- * Базовый интерфейс данных покупателя
+ * Базовый интерфейс для данных покупателя
  */
 interface IBaseCustomerData {
     payment: string;
@@ -39,46 +39,47 @@ interface IBaseCustomerData {
 }
 
 /**
- * Данные покупателя, приходящие от API или используемые в UI
+ * Данные покупателя, приходящие от API или отправляемые на бэкенд
+ */
+export interface IApiCustomerData extends IBaseCustomerData {}
+
+/**
+ * Данные покупателя внутри приложения (UI).
  */
 export interface ICustomerData extends IBaseCustomerData {}
 
 /**
- * Тело запроса для создания заказа
+ * Тело запроса для создания заказа (POST /order)
  */
-export interface IApiOrderRequest extends ICustomerData {
-    total: number;
-    items: string[];
+export interface IApiOrderRequest {
+    payment: string;
+    email: string;
+    phone: string;
+    address: string;
+    total: number;       // общая сумма заказа
+    items: string[];     // список ID товаров
 }
 
 /**
  * Ответ от сервера при успешном создании заказа
  */
 export interface IApiOrderResponse {
-    id: string;
-    total: number;
+    id: string;    // идентификатор созданного заказа
+    total: number; // подтверждённая сумма заказа
 }
 
 /**
- * Ошибка при создании заказа
+ * Структура ошибки при неудачном оформлении заказа (400 Bad Request)
  */
 export interface IApiOrderError {
     error: string;
 }
 
 /**
- * Заказ внутри UI
+ * Заказ, используемый внутри приложения (UI).
  */
 export interface IOrder {
-    products: IProduct[];
-    customerData: ICustomerData;
-    total: number;
-}
-
-/**
- * Список заказов, если API поддерживает
- */
-export interface IApiOrderList {
-    total: number;
-    items: IApiOrderResponse[];
+    products: IProduct[];     // товары, добавленные в корзину
+    customerData: ICustomerData; // данные покупателя
+    total: number;            // итоговая сумма заказа
 }
