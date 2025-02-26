@@ -24,8 +24,8 @@ export interface IProduct extends IBaseProduct {}
  * Список товаров, возвращаемый с бэкенда
  */
 export interface IApiProductList {
-    total: number;        // Общее количество товаров
-    items: IApiProduct[]; // Массив товаров
+    total: number;
+    items: IApiProduct[];
 }
 
 /**
@@ -56,16 +56,16 @@ export interface IApiOrderRequest {
     email: string;
     phone: string;
     address: string;
-    total: number;       // общая сумма заказа
-    items: string[];     // список ID товаров
+    total: number;
+    items: string[];
 }
 
 /**
  * Ответ от сервера при успешном создании заказа
  */
 export interface IApiOrderResponse {
-    id: string;    // идентификатор созданного заказа
-    total: number; // подтверждённая сумма заказа
+    id: string;
+    total: number;
 }
 
 /**
