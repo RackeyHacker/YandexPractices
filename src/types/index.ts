@@ -79,7 +79,7 @@ export interface IApiOrderError {
  * Заказ, используемый внутри приложения (UI).
  */
 export interface IOrder {
-    products: IProduct[];     // товары, добавленные в корзину
-    customerData: ICustomerData; // данные покупателя
-    total: number;            // итоговая сумма заказа
+    products: IProduct[];
+    customerData: ICustomerData;
+    total: number;
 }
